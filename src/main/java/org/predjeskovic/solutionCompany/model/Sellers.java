@@ -24,6 +24,17 @@ public class Sellers extends Persistable{
         return ordersList;
     }
 
+    public void setOrdersList(ArrayList<Orders> ordersList) {
+        this.ordersList = ordersList;
+    }
+
+    public void addOrder(Orders order){
+        if(ordersList == null){
+            ordersList = new ArrayList<Orders>();
+        }
+        ordersList.add(order);
+    }
+
     @Override
     public String toString() {
         return "Sellers{" +

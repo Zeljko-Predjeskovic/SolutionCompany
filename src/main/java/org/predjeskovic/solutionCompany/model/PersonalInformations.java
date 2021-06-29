@@ -55,6 +55,11 @@ public class PersonalInformations extends Persistable{
         this.phone = phone;
     }
 
+
+    public Addresses getAddress() {
+        return address;
+    }
+
     public void setAddress(Addresses address) {
         this.address = address;
     }

@@ -6,7 +6,7 @@ public class Customers extends Persistable{
 
     private PersonalInformations personalInformations;
 
-    private ArrayList<ServicePackages> servicePackagesList;
+    private ArrayList<ServicePackages> servicePackagesList = new ArrayList<ServicePackages>();
 
     protected Customers(){
 
@@ -16,12 +16,23 @@ public class Customers extends Persistable{
         return personalInformations;
     }
 
+    public void setServicePackagesList(ArrayList<ServicePackages> servicePackagesList) {
+        this.servicePackagesList = servicePackagesList;
+    }
+
     public void setPersonalInformations(PersonalInformations personalInformations) {
         this.personalInformations = personalInformations;
     }
 
     public ArrayList<ServicePackages> getServicePackagesList() {
         return servicePackagesList;
+    }
+
+    public void addServicePackage(ServicePackages servicePackage){
+        if(servicePackage==null){
+            servicePackagesList = new ArrayList<ServicePackages>();
+        }
+            servicePackagesList.add(servicePackage);
     }
 
     @Override

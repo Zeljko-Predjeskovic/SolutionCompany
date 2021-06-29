@@ -3,6 +3,7 @@ package org.predjeskovic.solutionCompany.persistence;
 
 import org.predjeskovic.solutionCompany.model.Persistable;
 
+
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;

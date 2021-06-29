@@ -7,7 +7,6 @@ import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.predjeskovic.solutionCompany.model.ServicePackages;
 
-import javax.annotation.processing.ProcessingEnvironment;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -28,7 +27,7 @@ public class ServicePackagesAccessObjectTest {
         try {
             ProcessBuilder pb = new ProcessBuilder();
             Properties props = new Properties();
-            props.setProperty("user","postgres");
+            props.setProperty("user", pb.environment().get("dbuser"));
             props.setProperty("password", pb.environment().get("dbpassword"));
             connection = DriverManager.getConnection("jdbc:postgresql://localhost/ITSolutionCompany",props);
             servicePackagesAccessObject = new ServicePackagesAccessObject(connection);
