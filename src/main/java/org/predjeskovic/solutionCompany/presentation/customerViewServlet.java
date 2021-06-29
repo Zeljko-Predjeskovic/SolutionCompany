@@ -13,6 +13,7 @@ public class customerViewServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
+        req.setAttribute("test","testtext");
         req.getRequestDispatcher("/customer/view.jsp").forward(req, resp);
     }
 

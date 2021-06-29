@@ -1,7 +1,5 @@
 package org.predjeskovic.solutionCompany.config;
 
-import org.predjeskovic.solutionCompany.persistence.ServicePackagesAccessObject;
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
