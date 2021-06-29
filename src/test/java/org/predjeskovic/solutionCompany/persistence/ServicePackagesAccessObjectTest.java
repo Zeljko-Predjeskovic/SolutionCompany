@@ -5,6 +5,7 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
+import org.predjeskovic.solutionCompany.config.DBConnectionConfig;
 import org.predjeskovic.solutionCompany.model.ServicePackages;
 
 import java.sql.Connection;
@@ -24,18 +25,7 @@ public class ServicePackagesAccessObjectTest {
 
     @BeforeEach
     void intializeDB() {
-        try {
-            ProcessBuilder pb = new ProcessBuilder();
-            Properties props = new Properties();
-            props.setProperty("user", pb.environment().get("dbuser"));
-            props.setProperty("password", pb.environment().get("dbpassword"));
-            connection = DriverManager.getConnection("jdbc:postgresql://localhost/ITSolutionCompany",props);
-            servicePackagesAccessObject = new ServicePackagesAccessObject(connection);
-
-        }
-        catch (SQLException e){
-            throw new RuntimeException("Failed to connect to database", e);
-        }
+            servicePackagesAccessObject = new ServicePackagesAccessObject(DBConnectionConfig.getDBConnection());
     }
 
 
