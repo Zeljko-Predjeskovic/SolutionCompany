@@ -1,9 +1,5 @@
 package org.predjeskovic.solutionCompany.model;
 
-import org.predjeskovic.solutionCompany.model.*;
-
-import java.util.ArrayList;
-
 public class DummyModels{
 
     public static Addresses addresses = new Addresses("vienna", "1050", "Spengergasse");
