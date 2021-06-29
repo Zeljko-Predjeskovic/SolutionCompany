@@ -9,8 +9,11 @@ import java.util.List;
 public class ServicePackagesService {
 
 
-    private ServicePackagesAccessObject servicePackagesAccessObject =
-            new ServicePackagesAccessObject(DBConnectionConfig.getDBConnection());
+    private final ServicePackagesAccessObject servicePackagesAccessObject;
+
+    public ServicePackagesService() {
+        this.servicePackagesAccessObject = new ServicePackagesAccessObject(DBConnectionConfig.getDBConnection());
+    }
 
 
     public List<ServicePackages> findAll(){

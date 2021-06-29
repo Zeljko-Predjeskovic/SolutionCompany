@@ -16,9 +16,5 @@
 
 <div>${test}</div>
 
-<c:forTokens items = "Zara,nuha,roshy" delims = "," var = "name">
-<c:out value = "${name}"><p/>
-    </c:forTokens>
-
 </body>
 </html>
