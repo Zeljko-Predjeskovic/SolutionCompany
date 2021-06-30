@@ -40,6 +40,42 @@ public class ServicePackagesAccessObject extends AbstractDataAccessObject{
     }
 
     @Override
+    protected String findOneStatement() {
+        return "SELECT servicepackageid, servicename, description, price FROM servicepackages WHERE servicepackageid=?";
+    }
+
+    @Override
+    protected void bindPersistableFindOne(PreparedStatement preparedStatement,Long id) {
+        try{
+            preparedStatement.setLong(1,id);
+           }
+        catch (Exception e){
+            throw new RuntimeException("Failed to bind servicePackage into findOne!! " , e);
+        }
+    }
+
+    @Override
+    protected Persistable mapFindOneToPersitable(ResultSet resultSet) {
+        try {
+            resultSet.next();
+            Long id = resultSet.getLong("servicepackageid");
+            String servicename = resultSet.getString("servicename");
+            String description = resultSet.getString("description");
+            Integer price = resultSet.getInt("price");
+            if(resultSet.wasNull()) {
+                price = null;
+            }
+
+            ServicePackages servicePackages = new ServicePackages(servicename,description,price);
+            servicePackages.setId(id);
+            return servicePackages;
+        }
+        catch (SQLException e){
+            throw new RuntimeException("Failed to map Resultset servicePackage",e);
+        }
+    }
+
+    @Override
     protected String updateStatement() {
         return "UPDATE servicepackages SET servicename= ? , description= ? , price= ? WHERE servicepackageid = ?";
     }
@@ -79,11 +115,18 @@ public class ServicePackagesAccessObject extends AbstractDataAccessObject{
 
     @Override
     protected void bindPersistableDelete(PreparedStatement preparedStatement, Persistable persistable) {
+        ServicePackages servicePackages = (ServicePackages) persistable;
+        try{
+            preparedStatement.setLong(1,servicePackages.getId());
 
+        }
+        catch (Exception e){
+            throw new RuntimeException("Failed to bind servicePackage into delte!! " , e);
+        }
     }
 
     @Override
     protected String deleteStatement() {
-        return null;
+        return "DELETE FROM servicepackages where servicepackageid=?";
     }
 }

@@ -38,6 +38,26 @@ public abstract class AbstractDataAccessObject <T extends Persistable>{
 
     protected abstract T mapResultSetToPersistable(ResultSet resultSet);
 
+    public T findOne(Long id){
+        Persistable persistable;
+        try{
+            PreparedStatement preparedStatement = connection.prepareStatement(findOneStatement());
+            bindPersistableFindOne(preparedStatement,id);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            return mapFindOneToPersitable(resultSet);
+        }
+        catch (Exception e){
+            throw new RuntimeException("Failed findOne", e);
+        }
+    }
+
+    protected abstract String findOneStatement();
+
+    protected abstract void bindPersistableFindOne(PreparedStatement preparedStatement, Long id);
+
+    protected abstract T mapFindOneToPersitable(ResultSet resultSet);
 
     public T update(T persistable) {
         try{

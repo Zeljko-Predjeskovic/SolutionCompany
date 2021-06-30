@@ -37,12 +37,17 @@ public class ServicePackagesAccessObjectTest {
     @Order(1)
     public void assertTeaFindAll(){
         List<ServicePackages> servicePackagesList = servicePackagesAccessObject.findAll();
-        System.out.println(servicePackagesList);
         Assertions.assertThat(servicePackagesList).isNotNull();
     }
 
     @Test
     @Order(2)
+    public void assertFindOne(){
+        Assertions.assertThat(servicePackagesAccessObject.findOne(11L)!=null);
+    }
+
+    @Test
+    @Order(3)
     public void assertInsert(){
        Long id = servicePackagesAccessObject.insert(DummyModels.servicePackages).getId();
 
@@ -51,11 +56,18 @@ public class ServicePackagesAccessObjectTest {
     }
 
     @Test
-    @Order(3)
+    @Order(4)
     public void assertUpdate(){
         ServicePackages servicePackages = DummyModels.servicePackages;
-        servicePackages.setId(5L);
+        servicePackages.setId(9L);
         Assertions.assertThat(servicePackagesAccessObject.update(servicePackages)!=null);
+    }
+
+    @Test
+    @Order(5)
+    public void assertDelete(){
+        ServicePackages servicePackages = (ServicePackages) servicePackagesAccessObject.insert(DummyModels.servicePackages);
+        Assertions.assertThat(servicePackagesAccessObject.delete(servicePackages));
     }
 
 
