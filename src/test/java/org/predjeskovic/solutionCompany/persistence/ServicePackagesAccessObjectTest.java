@@ -6,8 +6,6 @@ import org.predjeskovic.solutionCompany.config.DBConnectionConfig;
 import org.predjeskovic.solutionCompany.model.DummyModels;
 import org.predjeskovic.solutionCompany.model.ServicePackages;
 
-import java.sql.Connection;
-import java.sql.SQLException;
 import java.util.List;
 
 
@@ -15,11 +13,7 @@ import java.util.List;
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class ServicePackagesAccessObjectTest {
 
-    Connection connection;
     private ServicePackagesAccessObject servicePackagesAccessObject;
-    private static Long id;
-
-
 
     @BeforeEach
     void intializeDB() {

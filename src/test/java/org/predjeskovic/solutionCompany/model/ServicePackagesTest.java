@@ -17,7 +17,6 @@ public class ServicePackagesTest {
 
     @Test
     public void verifyServicePackages(){
-        Assertions.assertTrue(DummyModels.servicePackages.isNew());
         Assertions.assertTrue(!servicePackages2.isNew());
     }
 
