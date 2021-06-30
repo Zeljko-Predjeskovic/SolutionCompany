@@ -1,10 +1,11 @@
 package org.predjeskovic.solutionCompany.service;
 
 import org.predjeskovic.solutionCompany.config.DBConnectionConfig;
-import org.predjeskovic.solutionCompany.model.ServicePackages;
 import org.predjeskovic.solutionCompany.persistence.ServicePackagesAccessObject;
 
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 
 public class ServicePackagesService {
 
@@ -16,12 +17,12 @@ public class ServicePackagesService {
     }
 
 
-    public List<ServicePackages> findAll(){
-      /* return StreamSupport.stream(servicePackagesAccessObject.findAll().spliterator(), false)
-                .map(PersonNodeDto::fromPersonNode)
-                .collect(Collectors.toList());*/
-        return null;
+    public List<ServicePackagesDto> findAll(){
+       return (List<ServicePackagesDto>) StreamSupport.stream(servicePackagesAccessObject.findAll().spliterator(), false)
+               .map(ServicePackagesDto::fromServicePackages)
+                .collect(Collectors.toList());
     }
+
 
 
 }
