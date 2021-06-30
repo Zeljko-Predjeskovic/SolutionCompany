@@ -60,12 +60,21 @@ public class ServicePackagesAccessObject extends AbstractDataAccessObject{
 
     @Override
     public String insertStatement() {
-        return null;
+        return "INSERT INTO servicepackages (servicename, description, price) " +
+                "VALUES (?,?,?)";
     }
 
     @Override
     public void bindPersistableInsert(PreparedStatement preparedStatement, Persistable persistable) {
-
+        ServicePackages servicePackages = (ServicePackages) persistable;
+        try{
+            preparedStatement.setString(1,servicePackages.getServiceName());
+            preparedStatement.setString(2,servicePackages.getDescription());
+            preparedStatement.setInt(3,servicePackages.getPrice());
+        }
+        catch (Exception e){
+            throw new RuntimeException("Failed to bind servicePackage into insert!! " , e);
+        }
     }
 
     @Override

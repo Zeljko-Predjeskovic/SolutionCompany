@@ -43,6 +43,15 @@ public class ServicePackagesAccessObjectTest {
 
     @Test
     @Order(2)
+    public void assertInsert(){
+       Long id = servicePackagesAccessObject.insert(DummyModels.servicePackages).getId();
+
+       Assertions.assertThat(id != null);
+
+    }
+
+    @Test
+    @Order(3)
     public void assertUpdate(){
         ServicePackages servicePackages = DummyModels.servicePackages;
         servicePackages.setId(5L);
