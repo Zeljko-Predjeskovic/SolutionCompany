@@ -1,20 +1,18 @@
 package org.predjeskovic.solutionCompany.persistence;
 
 import org.assertj.core.api.Assertions;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Order;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.predjeskovic.solutionCompany.config.DBConnectionConfig;
+import org.predjeskovic.solutionCompany.model.DummyModels;
 import org.predjeskovic.solutionCompany.model.ServicePackages;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.List;
-import java.util.Properties;
 
 
+
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class ServicePackagesAccessObjectTest {
 
     Connection connection;
@@ -31,24 +29,25 @@ public class ServicePackagesAccessObjectTest {
 
     @AfterEach
     void destroyDB(){
-        try {
-            if (connection != null) {
-                connection.close();
-            }
-        }catch (SQLException e){
-            throw new RuntimeException("Failed closing Database",e);
-        }
+        DBConnectionConfig.closeConnection();
     }
 
 
     @Test
     @Order(1)
-    void assertTeaFindAll(){
+    public void assertTeaFindAll(){
         List<ServicePackages> servicePackagesList = servicePackagesAccessObject.findAll();
         System.out.println(servicePackagesList);
         Assertions.assertThat(servicePackagesList).isNotNull();
     }
 
+    @Test
+    @Order(2)
+    public void assertUpdate(){
+        ServicePackages servicePackages = DummyModels.servicePackages;
+        servicePackages.setId(5L);
+        Assertions.assertThat(servicePackagesAccessObject.update(servicePackages)!=null);
+    }
 
 
 }

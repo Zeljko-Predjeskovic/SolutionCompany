@@ -24,4 +24,14 @@ public class DBConnectionConfig {
 
         return connection;
     }
+
+    public static void closeConnection(){
+        try {
+            if (getDBConnection() != null) {
+                getDBConnection().close();
+            }
+        }catch (SQLException e){
+            throw new RuntimeException("Failed closing Database",e);
+        }
+    }
 }

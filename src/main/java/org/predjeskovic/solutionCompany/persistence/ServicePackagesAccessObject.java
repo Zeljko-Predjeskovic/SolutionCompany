@@ -41,12 +41,21 @@ public class ServicePackagesAccessObject extends AbstractDataAccessObject{
 
     @Override
     protected String updateStatement() {
-        return null;
+        return "UPDATE servicepackages SET servicename= ? , description= ? , price= ? WHERE servicepackageid = ?";
     }
 
     @Override
     protected void bindPersistableUpdate(PreparedStatement preparedStatement, Persistable persistable) {
-
+        ServicePackages servicePackages = (ServicePackages) persistable;
+        try{
+            preparedStatement.setString(1,servicePackages.getServiceName());
+            preparedStatement.setString(2,servicePackages.getDescription());
+            preparedStatement.setInt(3,servicePackages.getPrice());
+            preparedStatement.setLong(4,servicePackages.getId());
+        }
+        catch (Exception e){
+            throw new RuntimeException("Failed to bind servicePackage into update!! " , e);
+        }
     }
 
     @Override
