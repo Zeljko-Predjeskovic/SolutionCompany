@@ -1,6 +1,5 @@
 package org.predjeskovic.solutionCompany.service;
 
-import org.apache.tomcat.jdbc.pool.DataSource;
 import org.predjeskovic.solutionCompany.persistence.ServicePackagesAccessObject;
 
 import java.sql.Connection;
@@ -23,7 +22,5 @@ public class ServicePackagesService {
                .map(ServicePackagesDto::fromServicePackages)
                 .collect(Collectors.toList());
     }
-
-
 
 }

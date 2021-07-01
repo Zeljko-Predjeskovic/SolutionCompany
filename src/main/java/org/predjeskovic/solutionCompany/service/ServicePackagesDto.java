@@ -1,6 +1,5 @@
 package org.predjeskovic.solutionCompany.service;
 
-import org.predjeskovic.solutionCompany.model.Persistable;
 import org.predjeskovic.solutionCompany.model.ServicePackages;
 
 public class ServicePackagesDto {

@@ -1,5 +1,6 @@
 package org.predjeskovic.solutionCompany.service;
 
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.predjeskovic.solutionCompany.config.DBConnectionConfig;
@@ -10,13 +11,14 @@ public class ServicePackagesServiceTest {
 
     private ServicePackagesService servicePackagesService = new ServicePackagesService(DBConnectionConfig.getDBConnection());
 
+    @AfterEach
+    void afterEach(){
+        DBConnectionConfig.closeConnection();
+    }
+
     @Test
     public void verifyFindAll(){
         List<ServicePackagesDto> servicePackagesDtoList =servicePackagesService.findAll();
-
-        for(ServicePackagesDto e : servicePackagesDtoList){
-            System.out.println(e);
-        }
 
         Assertions.assertTrue((!servicePackagesDtoList.isEmpty() ||servicePackagesDtoList!=null));
     }
