@@ -17,7 +17,10 @@
 <body>
 
 <c:forEach items="${packages}" var="item">
-    ${item}<p>
+    <p>--------------Service--------------</p>
+    ${item.getServiceName()}<p>
+    ${item.getDescription()}<p>
+    ${item.getPrice()}<p>
 </c:forEach>
 
 
