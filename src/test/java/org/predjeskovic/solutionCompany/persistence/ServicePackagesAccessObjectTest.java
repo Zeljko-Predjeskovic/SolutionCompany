@@ -29,7 +29,7 @@ public class ServicePackagesAccessObjectTest {
 
     @Test
     @Order(1)
-    public void assertTeaFindAll(){
+    public void assertFindAll(){
         List<ServicePackages> servicePackagesList = servicePackagesAccessObject.findAll();
         Assertions.assertThat(servicePackagesList).isNotNull();
     }
