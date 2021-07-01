@@ -18,8 +18,8 @@ public class DBConnectionConfig {
 
     public static Connection getDBConnection(){
         try {
-            props.setProperty("user", pb.environment().get("dbuser"));
-            props.setProperty("password", pb.environment().get("dbpassword"));
+            props.setProperty("user", System.getProperty("dbuser"));
+            props.setProperty("password", System.getProperty("dbpassword"));
             connection = DriverManager.getConnection("jdbc:postgresql://127.0.0.1:5432/ITSolutionCompany", props);
         }
         catch (SQLException e){
