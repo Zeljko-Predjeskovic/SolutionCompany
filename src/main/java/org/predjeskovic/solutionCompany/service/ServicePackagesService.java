@@ -1,6 +1,6 @@
 package org.predjeskovic.solutionCompany.service;
 
-import org.predjeskovic.solutionCompany.config.DBConnectionConfig;
+import org.apache.tomcat.jdbc.pool.DataSource;
 import org.predjeskovic.solutionCompany.persistence.ServicePackagesAccessObject;
 
 import java.sql.Connection;
@@ -13,8 +13,8 @@ public class ServicePackagesService {
 
     private final ServicePackagesAccessObject servicePackagesAccessObject;
 
-    public ServicePackagesService() {
-        this.servicePackagesAccessObject = new ServicePackagesAccessObject(DBConnectionConfig.getDBConnection());
+    public ServicePackagesService(Connection connection) {
+        this.servicePackagesAccessObject = new ServicePackagesAccessObject(connection);
     }
 
 

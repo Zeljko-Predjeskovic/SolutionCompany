@@ -2,12 +2,13 @@ package org.predjeskovic.solutionCompany.service;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.predjeskovic.solutionCompany.config.DBConnectionConfig;
 
 import java.util.List;
 
 public class ServicePackagesServiceTest {
 
-    private ServicePackagesService servicePackagesService = new ServicePackagesService();
+    private ServicePackagesService servicePackagesService = new ServicePackagesService(DBConnectionConfig.getDBConnection());
 
     @Test
     public void verifyFindAll(){
