@@ -11,4 +11,8 @@
 ![](images/img1.PNG)
 ![](images/img2.PNG)
 
+* add in Pom username and password so the tests can run
+
+![](images/img3.PNG)
+
 ### Run project with Jenkins

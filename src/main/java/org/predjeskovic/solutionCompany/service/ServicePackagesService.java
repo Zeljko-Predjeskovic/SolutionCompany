@@ -3,6 +3,7 @@ package org.predjeskovic.solutionCompany.service;
 import org.predjeskovic.solutionCompany.config.DBConnectionConfig;
 import org.predjeskovic.solutionCompany.persistence.ServicePackagesAccessObject;
 
+import java.sql.Connection;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
