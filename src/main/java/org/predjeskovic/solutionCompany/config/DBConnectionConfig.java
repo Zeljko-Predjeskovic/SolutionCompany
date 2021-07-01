@@ -16,7 +16,7 @@ public class DBConnectionConfig {
             Properties props = new Properties();
             props.setProperty("user", pb.environment().get("dbuser"));
             props.setProperty("password", pb.environment().get("dbpassword"));
-            connection = DriverManager.getConnection("jdbc:postgresql://localhost/ITSolutionCompany", props);
+            connection = DriverManager.getConnection("jdbc:postgresql://127.0.0.1:5432/ITSolutionCompany", props);
         }
         catch (SQLException e){
             throw new RuntimeException("Failed to connect to database", e);
