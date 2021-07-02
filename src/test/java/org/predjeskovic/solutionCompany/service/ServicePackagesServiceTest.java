@@ -22,4 +22,11 @@ public class ServicePackagesServiceTest {
 
         Assertions.assertTrue((!servicePackagesDtoList.isEmpty() ||servicePackagesDtoList!=null));
     }
+
+    @Test
+    public void verifyFindOne(){
+        ServicePackagesDto servicePackagesDto =servicePackagesService.findOneById(11L);
+
+        Assertions.assertTrue((servicePackagesDto.getId()==11L ||servicePackagesDto!=null));
+    }
 }

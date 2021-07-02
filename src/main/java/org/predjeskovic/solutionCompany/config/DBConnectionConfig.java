@@ -16,10 +16,14 @@ public class DBConnectionConfig {
 
     private static DataSource dataSource = new DataSource();
 
+    /**
+     *
+     * @return Connection for postgresDB, used only for tests
+     */
     public static Connection getDBConnection(){
         try {
-            props.setProperty("user", System.getProperty("dbuser"));
-            props.setProperty("password", System.getProperty("dbpassword"));
+            props.setProperty("user", pb.environment().get("dbuser"));
+            props.setProperty("password", pb.environment().get("dbpassword"));
             connection = DriverManager.getConnection("jdbc:postgresql://127.0.0.1:5432/ITSolutionCompany", props);
         }
         catch (SQLException e){
@@ -39,6 +43,10 @@ public class DBConnectionConfig {
         }
     }
 
+    /**
+     *
+     * @return DataSource to connect postgres with tomcat server
+     */
     public static DataSource getDataSource() {
         DataSource dataSource = new DataSource();
         dataSource.setDriverClassName("org.postgresql.Driver");

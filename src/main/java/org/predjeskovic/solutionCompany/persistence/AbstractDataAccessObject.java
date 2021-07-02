@@ -7,6 +7,7 @@ import org.predjeskovic.solutionCompany.model.Persistable;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public abstract class AbstractDataAccessObject <T extends Persistable>{
 
@@ -38,15 +39,14 @@ public abstract class AbstractDataAccessObject <T extends Persistable>{
 
     protected abstract T mapResultSetToPersistable(ResultSet resultSet);
 
-    public T findOne(Long id){
-        Persistable persistable;
+    public Optional<T> findOne(Long id){
         try{
             PreparedStatement preparedStatement = connection.prepareStatement(findOneStatement());
             bindPersistableFindOne(preparedStatement,id);
 
             ResultSet resultSet = preparedStatement.executeQuery();
 
-            return mapFindOneToPersitable(resultSet);
+            return Optional.of(mapFindOneToPersitable(resultSet));
         }
         catch (Exception e){
             throw new RuntimeException("Failed findOne", e);

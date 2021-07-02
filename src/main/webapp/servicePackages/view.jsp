@@ -21,6 +21,7 @@
     ${item.getServiceName()}<p>
     ${item.getDescription()}<p>
     ${item.getPrice()}<p>
+    <a type="button" href="/ITSolutionCompany_war/packages/edit/${item.getId()}">edit</a>
 </c:forEach>
 
 

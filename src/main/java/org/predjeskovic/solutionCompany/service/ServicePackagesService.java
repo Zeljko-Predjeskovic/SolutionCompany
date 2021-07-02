@@ -23,4 +23,11 @@ public class ServicePackagesService {
                 .collect(Collectors.toList());
     }
 
+    public ServicePackagesDto findOneById(Long id){
+        return (ServicePackagesDto) servicePackagesAccessObject.findOne(id)
+                .map(ServicePackagesDto::fromServicePackages)
+                .orElse(null);
+
+    }
+
 }
