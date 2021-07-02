@@ -22,7 +22,9 @@ public class DBConnectionConfig {
      */
     public static Connection getDBConnection(){
         try {
-            props.setProperty("user", pb.environment().get("dbuser"));
+            props.setProperty("user",
+                    //change to System.getProprerty("dbuser") when testing with jenkins maven command
+                    pb.environment().get("dbuser"));
             props.setProperty("password", pb.environment().get("dbpassword"));
             connection = DriverManager.getConnection("jdbc:postgresql://127.0.0.1:5432/ITSolutionCompany", props);
         }
