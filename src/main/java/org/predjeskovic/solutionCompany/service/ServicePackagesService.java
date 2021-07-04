@@ -39,4 +39,12 @@ public class ServicePackagesService {
                 .orElse(null);
     }
 
+    public ServicePackagesDto insert(ServicePackagesDto servicePackagesDto){
+        return Optional.ofNullable(servicePackagesDto)
+                .map(ServicePackagesDto::toServicePackages)
+                .map(it->servicePackagesAccessObject.insert(it))
+                .map(ServicePackagesDto::fromServicePackages)
+                .orElse(null);
+    }
+
 }

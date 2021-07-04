@@ -4,8 +4,10 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.predjeskovic.solutionCompany.config.DBConnectionConfig;
+import org.predjeskovic.solutionCompany.model.DummyModels;
 
 import java.util.List;
+import java.util.Optional;
 
 public class ServicePackagesServiceTest {
 
@@ -42,4 +44,15 @@ public class ServicePackagesServiceTest {
         Assertions.assertTrue((erg.getServiceName().equals(s) ||servicePackagesDto!=null));
 
     }
+
+    @Test
+    public void verifyInsert(){
+        ServicePackagesDto servicePackagesDto = servicePackagesService.insert(Optional.of(DummyModels.servicePackages)
+        .map(ServicePackagesDto::fromServicePackages)
+        .orElse(null));
+
+        Assertions.assertTrue(servicePackagesDto!=null);
+    }
+
+
 }
