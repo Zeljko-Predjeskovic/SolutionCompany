@@ -3,8 +3,8 @@
 ### About this project
 
 A Server side rendered web application manage the orders of the customers for a company.
-This projects purpose is to getting used with tomcat and jdbc. Since I use a lot of Springboot web, I thought
-about getting a perspective how the springboot web actually works, since it is running on a tomcat server.
+This project's purpose is getting used with tomcat and jdbc. Since I use a lot of Springboot web, I thought, 
+getting a perspective of how the springboot web actually works, since it is running on a tomcat server.
 
 ### Setup project on IntelliJ
 
