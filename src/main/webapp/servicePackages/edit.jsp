@@ -23,9 +23,9 @@
 
 <form action="/ITSolutionCompany_war/packages/edit/update/<%=s.getId()%>" method="post">
 
-    <input name="serviceName" placeholder="ServiceName"/></p>
-    <input name="description" placeholder="Description"/></p>
-    <input type="number" name="price" placeholder="Price"/></p>
+    <input name="serviceName" value="<%=s.getServiceName()%>" placeholder="ServiceName"/></p>
+    <input name="description" value="<%=s.getDescription()%>" placeholder="Description"/></p>
+    <input type="number" name="price" value="<%=s.getPrice()%>" placeholder="Price"/></p>
 
     <button type="submit">edit</button>
 </form>

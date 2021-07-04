@@ -16,14 +16,20 @@
 </head>
 <body>
 
-<c:forEach items="${packages}" var="item">
-    <p>--------------Service--------------</p>
-    ${item.getServiceName()}<p>
-    ${item.getDescription()}<p>
-    ${item.getPrice()}<p>
-    <a type="button" href="/ITSolutionCompany_war/packages/edit/${item.getId()}">edit</a>
-</c:forEach>
-
+<div style="display: flex">
+    <div>
+    <c:forEach items="${packages}" var="item">
+        <p>--------------Service--------------</p>
+        ${item.getServiceName()}<p>
+        ${item.getDescription()}<p>
+        ${item.getPrice()}<p>
+        <a type="button" href="/ITSolutionCompany_war/packages/edit/${item.getId()}">edit</a>
+    </c:forEach>
+    </div>
+    <div style="margin: 50px">
+        <a type="button" href="/ITSolutionCompany_war/packages/create">create package</a>
+    </div>
+</div>
 
 </body>
 </html>
