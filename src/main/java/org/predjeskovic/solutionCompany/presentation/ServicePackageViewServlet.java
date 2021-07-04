@@ -37,6 +37,7 @@ public class ServicePackageViewServlet extends HttpServlet {
         List<ServicePackagesDto> servicePackagesDtoList = servicePackagesService.findAll();
 
 
+        servicePackagesDtoList.sort((f1,f2) -> f1.getPrice() - f2.getPrice());
 
         req.setAttribute("packages",servicePackagesDtoList);
         req.getRequestDispatcher("/servicePackages/view.jsp").forward(req, resp);

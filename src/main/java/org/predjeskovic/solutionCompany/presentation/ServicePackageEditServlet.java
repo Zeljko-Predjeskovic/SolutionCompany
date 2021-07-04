@@ -45,4 +45,25 @@ public class ServicePackageEditServlet extends HttpServlet {
         req.getRequestDispatcher("/servicePackages/edit.jsp").forward(req, resp);
 
     }
+
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+        String[] s = req.getPathInfo().split("/");
+
+        Long id = Long.parseLong(s[2]);
+
+        ServicePackagesDto servicePackagesDto = new ServicePackagesDto();
+
+        servicePackagesDto.setId(id);
+        servicePackagesDto.setServiceName(req.getParameter("serviceName"));
+        servicePackagesDto.setDescription(req.getParameter("description"));
+        servicePackagesDto.setPrice(Integer.parseInt(req.getParameter("price")));
+
+        servicePackagesService.update(servicePackagesDto);
+
+
+        resp.sendRedirect("/ITSolutionCompany_war/packages/view");
+
+
+    }
 }

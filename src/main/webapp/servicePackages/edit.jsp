@@ -12,11 +12,22 @@
     <title>Edit</title>
 </head>
 <body>
-<%  ServicePackagesDto s = (ServicePackagesDto) request.getAttribute("package");  %>
+<%  ServicePackagesDto s = (ServicePackagesDto) request.getAttribute("package"); %>
+
 <p>--------------Service--------------</p>
+<%=s.getId()%><p/>
 <%=s.getServiceName()%><p/>
 <%=s.getDescription()%><p/>
 <%=s.getPrice()%><p/>
 
+
+<form action="/ITSolutionCompany_war/packages/edit/update/<%=s.getId()%>" method="post">
+
+    <input name="serviceName" placeholder="ServiceName"/></p>
+    <input name="description" placeholder="Description"/></p>
+    <input type="number" name="price" placeholder="Price"/></p>
+
+    <button type="submit">edit</button>
+</form>
 </body>
 </html>
