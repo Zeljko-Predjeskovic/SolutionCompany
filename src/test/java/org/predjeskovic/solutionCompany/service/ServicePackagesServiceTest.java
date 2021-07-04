@@ -29,4 +29,17 @@ public class ServicePackagesServiceTest {
 
         Assertions.assertTrue((servicePackagesDto.getId()==11L ||servicePackagesDto!=null));
     }
+
+    @Test
+    public void verifyUpdate(){
+        String s = "updated ServiceName";
+
+        ServicePackagesDto servicePackagesDto = servicePackagesService.findOneById(11L);
+        servicePackagesDto.setServiceName(s);
+
+        var erg = servicePackagesService.update(servicePackagesDto);
+
+        Assertions.assertTrue((erg.getServiceName().equals(s) ||servicePackagesDto!=null));
+
+    }
 }

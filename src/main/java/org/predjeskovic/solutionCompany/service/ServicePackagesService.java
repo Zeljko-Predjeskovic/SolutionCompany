@@ -4,6 +4,7 @@ import org.predjeskovic.solutionCompany.persistence.ServicePackagesAccessObject;
 
 import java.sql.Connection;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
@@ -28,6 +29,14 @@ public class ServicePackagesService {
                 .map(ServicePackagesDto::fromServicePackages)
                 .orElse(null);
 
+    }
+
+    public ServicePackagesDto update(ServicePackagesDto servicePackagesDto){
+        return Optional.ofNullable(servicePackagesDto)
+                .map(ServicePackagesDto::toServicePackages)
+                .map(it -> servicePackagesAccessObject.update(it))
+                .map(ServicePackagesDto::fromServicePackages)
+                .orElse(null);
     }
 
 }
