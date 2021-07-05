@@ -1,7 +1,8 @@
 <%@ page import="org.predjeskovic.solutionCompany.service.ServicePackagesService" %>
 <%@ page import="org.predjeskovic.solutionCompany.model.ServicePackages" %>
 <%@ page import="org.predjeskovic.solutionCompany.service.ServicePackagesDto" %>
-<%@ page import="java.util.List" %><%--
+<%@ page import="java.util.List" %>
+<%@ page import="org.predjeskovic.solutionCompany.presentation.ServicePackageViewServlet" %><%--
   Created by IntelliJ IDEA.
   User: Zeljko Predjeskovic
   Date: 30.06.2021

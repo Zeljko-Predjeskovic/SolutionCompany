@@ -1,4 +1,5 @@
 <%@ page import="org.predjeskovic.solutionCompany.service.ServicePackagesDto" %>
+<%@ page import="org.predjeskovic.solutionCompany.presentation.ServicePackageViewServlet" %>
 <%--Created by IntelliJ IDEA.
   User: Zeljko Predjeskovic
   Date: 02.07.2021
@@ -20,7 +21,6 @@
 <%=s.getDescription()%><p/>
 <%=s.getPrice()%><p/>
 
-
 <form action="/ITSolutionCompany_war/packages/edit/update/<%=s.getId()%>" method="post">
 
     <input name="serviceName" value="<%=s.getServiceName()%>" placeholder="ServiceName"/></p>
@@ -28,6 +28,9 @@
     <input type="number" name="price" value="<%=s.getPrice()%>" placeholder="Price"/></p>
 
     <button type="submit">edit</button>
+</form>
+<form action="/ITSolutionCompany_war/packages/view/<%=s.getId()%>" method="post">
+    <button type="submit">delete</button>
 </form>
 </body>
 </html>

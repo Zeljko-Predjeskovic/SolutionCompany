@@ -47,4 +47,7 @@ public class ServicePackagesService {
                 .orElse(null);
     }
 
+    public void delete(ServicePackagesDto servicePackagesDto){
+        servicePackagesAccessObject.delete(servicePackagesDto.toServicePackages());
+    }
 }

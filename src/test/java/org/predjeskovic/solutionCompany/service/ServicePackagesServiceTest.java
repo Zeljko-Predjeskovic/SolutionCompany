@@ -1,14 +1,13 @@
 package org.predjeskovic.solutionCompany.service;
 
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.predjeskovic.solutionCompany.config.DBConnectionConfig;
 import org.predjeskovic.solutionCompany.model.DummyModels;
 
 import java.util.List;
 import java.util.Optional;
 
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class ServicePackagesServiceTest {
 
     private ServicePackagesService servicePackagesService = new ServicePackagesService(DBConnectionConfig.getDBConnection());
@@ -18,6 +17,7 @@ public class ServicePackagesServiceTest {
         DBConnectionConfig.closeConnection();
     }
 
+    @Order(1)
     @Test
     public void verifyFindAll(){
         List<ServicePackagesDto> servicePackagesDtoList =servicePackagesService.findAll();
@@ -25,6 +25,7 @@ public class ServicePackagesServiceTest {
         Assertions.assertTrue((!servicePackagesDtoList.isEmpty() ||servicePackagesDtoList!=null));
     }
 
+    @Order(2)
     @Test
     public void verifyFindOne(){
         ServicePackagesDto servicePackagesDto =servicePackagesService.findOneById(11L);
@@ -32,6 +33,7 @@ public class ServicePackagesServiceTest {
         Assertions.assertTrue((servicePackagesDto.getId()==11L ||servicePackagesDto!=null));
     }
 
+    @Order(3)
     @Test
     public void verifyUpdate(){
         String s = "updated ServiceName";
@@ -45,6 +47,7 @@ public class ServicePackagesServiceTest {
 
     }
 
+    @Order(4)
     @Test
     public void verifyInsert(){
         ServicePackagesDto servicePackagesDto = servicePackagesService.insert(Optional.of(DummyModels.servicePackages)
@@ -52,6 +55,25 @@ public class ServicePackagesServiceTest {
         .orElse(null));
 
         Assertions.assertTrue(servicePackagesDto!=null);
+    }
+
+
+    @Order(5)
+    @Test
+    public void verifyDelte(){
+        ServicePackagesDto servicePackagesDto = servicePackagesService.insert(Optional.of(DummyModels.servicePackages)
+                .map(ServicePackagesDto::fromServicePackages)
+                .orElse(null));
+
+        servicePackagesService.delete(servicePackagesDto);
+
+        try {
+            servicePackagesService.findOneById(servicePackagesDto.getId());
+        }
+        catch (RuntimeException e){
+            Assertions.assertTrue(e.getMessage().equals("Failed findOne"));
+        }
+
     }
 
 

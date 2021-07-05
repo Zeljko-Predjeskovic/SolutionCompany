@@ -12,13 +12,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.Comparator;
 import java.util.List;
 
-@WebServlet(urlPatterns = "/packages/view")
+@WebServlet(urlPatterns = "/packages/view/*")
 public class ServicePackageViewServlet extends HttpServlet {
 
-    private ServicePackagesService servicePackagesService;
+    public static ServicePackagesService servicePackagesService;
 
     private DataSource dataSource = DBConnectionConfig.getDataSource();
 
@@ -40,6 +39,25 @@ public class ServicePackageViewServlet extends HttpServlet {
         req.setAttribute("packages",searchBar(req.getParameter("searchbar")));
         System.out.println(req.getParameter("searchbar"));
         req.getRequestDispatcher("/servicePackages/view.jsp").forward(req, resp);
+
+    }
+
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+        String[] s = req.getPathInfo().split("/");
+
+        for(String t : s)
+            System.out.println(t);
+
+        Long id = Long.parseLong(s[1]);
+
+        ServicePackagesDto servicePackagesDto = servicePackagesService.findOneById(id);
+
+        servicePackagesService.delete(servicePackagesDto);
+
+
+        resp.sendRedirect("/ITSolutionCompany_war/packages/view");
+
 
     }
 
