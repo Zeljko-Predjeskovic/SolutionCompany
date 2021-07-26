@@ -95,7 +95,7 @@ public abstract class AbstractDataAccessObject <T extends Persistable>{
             persistable.setId(id);
         }
         catch (SQLException e){
-            throw new RuntimeException("Insert Lemonade failed", e);
+            throw new RuntimeException("Insert ServicePackage failed", e);
         }
         return persistable;
     }

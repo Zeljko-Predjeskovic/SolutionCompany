@@ -27,13 +27,11 @@
         <a type="button" href="/ITSolutionCompany_war/packages/edit/${item.getId()}">edit</a>
     </c:forEach>
     </div>
-    <div style="margin: 50px">
-        <a type="button" href="/ITSolutionCompany_war/packages/create">create package</a>
-    </div>
     <div>
         <form method="get" action="/ITSolutionCompany_war/packages/view">
             <input name="searchbar"/>
-            <button type="submit">search</button>
+            <button type="submit">search</button></p>
+            <a type="button" href="/ITSolutionCompany_war/packages/create">create package</a>
         </form>
     </div>
 </div>

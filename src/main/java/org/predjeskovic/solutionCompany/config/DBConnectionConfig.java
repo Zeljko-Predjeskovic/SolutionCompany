@@ -10,6 +10,7 @@ import java.util.Properties;
 public class DBConnectionConfig {
 
     private static ProcessBuilder pb = new ProcessBuilder();
+
     private static Properties props = new Properties();
 
     private static Connection connection;
@@ -24,8 +25,8 @@ public class DBConnectionConfig {
         try {
             props.setProperty("user",
                     //change to System.getProprerty("dbuser") when testing with jenkins maven command
-                    pb.environment().get("dbuser"));
-            props.setProperty("password", pb.environment().get("dbpassword"));
+                    System.getProperty("dbuser"));
+            props.setProperty("password", System.getProperty("dbpassword"));
             connection = DriverManager.getConnection("jdbc:postgresql://127.0.0.1:5432/ITSolutionCompany", props);
         }
         catch (SQLException e){
