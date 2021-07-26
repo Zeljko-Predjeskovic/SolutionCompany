@@ -17,7 +17,7 @@ pipeline {
         }
         stage("test") {
             steps {
-                bat "mvn -D${DBUSER} -D${DBPASSWORD} test"
+                bat "mvn -Ddbuser=${DBUSER} -Ddbpassword=${DBPASSWORD} test"
             }
         }
         stage("deploy") {
