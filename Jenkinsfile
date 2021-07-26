@@ -11,13 +11,13 @@ pipeline {
     stages {
         stage("build") {
             steps {
-                sh 'mvn clean'
-                sh 'mvn install'
+                bat 'mvn clean'
+                bat 'mvn install'
             }
         }
         stage("test") {
             steps {
-                sh "mvn -D${DBUSER} -D${DBPASSWORD} test"
+                bat "mvn -D${DBUSER} -D${DBPASSWORD} test"
             }
         }
         stage("deploy") {
