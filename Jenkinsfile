@@ -2,10 +2,11 @@ pipeline {
     agent any
     tools{
         maven 'Maven3.6.3'
+        jdk 'JDK 16'
     }
     parameters {
-        string(name: 'dbuser')
-        string(name: 'dbpassword')
+        string(name: 'DBUSER')
+        string(name: 'DBPASSWORD')
     }
     stages {
         stage("build") {
@@ -16,7 +17,7 @@ pipeline {
         }
         stage("test") {
             steps {
-                sh "mvn -D${dbuser} -D${dbpassword} test"
+                sh "mvn -D${DBUSER} -D${DBPASSWORD} test"
             }
         }
         stage("deploy") {
